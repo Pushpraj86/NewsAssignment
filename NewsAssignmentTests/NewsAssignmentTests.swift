@@ -5,16 +5,60 @@
 //  Created by Marketgoal on 20/04/18.
 //  Copyright © 2018 Marketgoal. All rights reserved.
 //
-
+import Foundation
 import XCTest
 @testable import NewsAssignment
 
 class NewsAssignmentTests: XCTestCase {
     
+      var sut1: ViewController!
+      var sut2: WebViewController!
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        self.sut1 = storyboard.instantiateViewController(withIdentifier: "viewController") as! ViewController
+        _ = sut1.view
     }
+    
+    func testHasTableView()
+    {
+        XCTAssertNotNil(sut1.tblNewsView)
+        
+    }
+    
+    
+    
+    func testTableviewDelegate()
+    {
+        
+        XCTAssertNotNil(sut1.tblNewsView.delegate)
+    }
+    
+    
+    func testTableViewConfirmsDelegate()
+    {
+        
+        XCTAssertTrue(sut1.conforms(to: UITableViewDelegate.self))
+      
+    }
+    
+    func testTableViewConfirmsDatasourse()
+    {
+        
+        XCTAssertTrue(sut1.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(sut1.responds(to: #selector(sut1.tableView(_:numberOfRowsInSection:))))
+       
+    }
+    
+   
+    
+    
+    
+    
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
