@@ -1,0 +1,6 @@
+framework module Pods_NewsAssignment {
+  umbrella header "Pods-NewsAssignment-umbrella.h"
+
+  export *
+  module * { export * }
+}
